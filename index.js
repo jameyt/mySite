@@ -65,6 +65,7 @@ router.get("/contact",function(req,res){
   res.sendFile(path + "contact.html");
 });
 
+
 app.use("/",router);
 
 // app.use("*",function(req,res){
