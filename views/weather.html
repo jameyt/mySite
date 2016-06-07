@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>weather - jamey's site</title>
+</head>
+
+<body>
+    <h1>Tulsa:</h1>
+    <div></div>
+    <div>Current:</div>
+    <div id="tc"></div>
+    <div>High:</div>
+    <div id="th"></div>
+    <div>Low:</div>
+    <div id="tl"></div>
+    <div>Info:</div>
+    <div id="ti"></div>
+    <div></div>
+    <h1>Bartlesville:</h1>
+    <div></div>
+    <div>Current:</div>
+    <div id="bc"></div>
+    <div>High:</div>
+    <div id="bh"></div>
+    <div>Low:</div>
+    <div id="bl"></div>
+    <div>Info:</div>
+    <div id="bi"></div>
+    <div></div>
+    <div>Powered by <a href="https://www.wunderground.com/?apiref=59e33bad466a8f6f">weather underground</a></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $.ajax({
+            url: "https://api.wunderground.com/api/be6e647263e50ced/geolookup/conditions/q/ok/Tulsa.json",
+            dataType: "jsonp",
+            success: function(parsed_json) {
+                var location = parsed_json['location']['city'];
+                var temp_f = parsed_json['current_observation']['temp_f'];
+                //alert("Current temperature in " + location + " is: " + temp_f);
+                document.getElementById("tc").innerHTML = temp_f + "° F";
+            }
+        });
+        $.ajax({
+            url: "https://api.wunderground.com/api/be6e647263e50ced/geolookup/conditions/q/ok/Bartlesville.json",
+            dataType: "jsonp",
+            success: function(parsed_json) {
+                var location = parsed_json['location']['city'];
+                var temp_f = parsed_json['current_observation']['temp_f'];
+                //alert("Current temperature in " + location + " is: " + temp_f);
+                document.getElementById("bc").innerHTML = temp_f + "° F";
+            }
+        });
+        $.ajax({
+            url: "https://api.wunderground.com/api/be6e647263e50ced/forecast/q/OK/Tulsa.json",
+            dataType: "jsonp",
+            success: function(parsed_json) {
+                var high = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var conditions = parsed_json['forecast']['simpleforecast']['forecastday'][0]['conditions'];
+                document.getElementById("th").innerHTML = high + "° F";
+                document.getElementById("tl").innerHTML = low + "° F";
+                document.getElementById("ti").innerHTML = conditions;
+            }
+        });
+        $.ajax({
+            url: "https://api.wunderground.com/api/be6e647263e50ced/forecast/q/OK/Bartlesville.json",
+            dataType: "jsonp",
+            success: function(parsed_json) {
+                var high = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var conditions = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                document.getElementById("bh").innerHTML = high + "° F";
+                document.getElementById("bl").innerHTML = low + "° F";
+                document.getElementById("bi").innerHTML = conditions;
+            }
+        });
+    });
+</script>
+
+</html>

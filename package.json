@@ -2,9 +2,9 @@
   "name": "mysite",
   "version": "0.1.5",
   "description": "A simple Node.js app using Express",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {    
     "express": "^4.13.3"
