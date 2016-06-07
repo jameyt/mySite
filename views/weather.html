@@ -58,7 +58,7 @@
             dataType: "jsonp",
             success: function(parsed_json) {
                 var high = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
                 var conditions = parsed_json['forecast']['simpleforecast']['forecastday'][0]['conditions'];
                 document.getElementById("th").innerHTML = high + "° F";
                 document.getElementById("tl").innerHTML = low + "° F";
@@ -70,8 +70,8 @@
             dataType: "jsonp",
             success: function(parsed_json) {
                 var high = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-                var conditions = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+                var low = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
+                var conditions = parsed_json['forecast']['simpleforecast']['forecastday'][0]['conditions'];
                 document.getElementById("bh").innerHTML = high + "° F";
                 document.getElementById("bl").innerHTML = low + "° F";
                 document.getElementById("bi").innerHTML = conditions;
